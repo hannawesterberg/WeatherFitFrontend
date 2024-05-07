@@ -1,0 +1,13 @@
+
+  
+    <!-- Form for City Input -->
+    <form (ngSubmit)="onSubmitPreferences()">
+      <input type="text" [(ngModel)]="preferences.activity" name="activity" placeholder="Activity">
+      <input type="text" [(ngModel)]="preferences.thermal_preference" name="thermal_preference" placeholder="Thermal Preference">
+      <button type="submit">Save Preferences</button>
+    </form>
+    
+    <form (ngSubmit)="onSubmitCity()">
+      <input type="text" [(ngModel)]="city" name="city" placeholder="Your City">
+      <button type="submit">Submit City and Fetch Weather</button>
+    </form>

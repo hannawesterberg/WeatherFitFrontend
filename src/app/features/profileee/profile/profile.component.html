@@ -1,0 +1,11 @@
+<!-- profile.component.html -->
+<div class="container mt-4">
+  <h2>Weather Information Form</h2>
+  <form (ngSubmit)="onSubmit()" #weatherForm="ngForm">
+      <div class="form-group">
+          <label for="cityInput">Enter City:</label>
+          <input type="text" class="form-control" id="cityInput" [(ngModel)]="city" name="city" required placeholder="Type your city here...">
+      </div>
+      <button type="submit" class="btn btn-primary">Get Weather</button>
+  </form>
+</div>

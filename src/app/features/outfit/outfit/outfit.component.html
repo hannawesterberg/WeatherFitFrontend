@@ -1,0 +1,11 @@
+<!-- outfit.component.html -->
+<div class="container">
+  <h1>Outfit Recommendation for </h1>
+  <div *ngIf="data && data.returnMessage; else loadingOrError">
+    <p>{{ data.returnMessage }}</p>
+  </div>
+  <ng-template #loadingOrError>
+    <p *ngIf="data === null">Loading recommendation...</p>
+    <p *ngIf="data === undefined">Unable to load data. Please try again later.</p>
+  </ng-template>
+</div>
