@@ -6,6 +6,7 @@ export interface Credentials
  }
 
  export interface LoginResponse {
-  token: string;
+
+  userId: number;  // Assuming the response contains a userId field
   // Add other response properties if there are any
 }

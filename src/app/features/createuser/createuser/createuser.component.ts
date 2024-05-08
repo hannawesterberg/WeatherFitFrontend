@@ -79,6 +79,33 @@ loginCredentials: Credentials = {email:'', password:''};
   */
 
   onLogin(): void {
+    //NEW THAT STORES THE USER ID FROM THE RESPONSE TERMINAL  
+
+    this.errorMessage = ''; // Clear error message
+    this.apiService.loginUser(this.loginCredentials).subscribe({
+        next: (response) => {
+            console.log('Login successful:', response.userId);
+
+            // Store the email and userId in local storage or your preferred method
+            //localStorage.setItem('userId', response.userId);  // unecessary as we use the setContext 
+            this.sessionService.setContext({ userId: +response.userId.toString()});
+            //this.sessionService.setContext({userId: response.userId});
+            this.sessionService.setUserEmail(this.loginCredentials.email);  // Store the email of the loggedin user
+
+            // Navigate to the next component
+            this.router.navigate(['/input']);
+        },
+        error: (error) => {
+            console.error('Error logging in:', error);
+            this.errorMessage = 'Failed to login: ' + (error.error.message || 'Unknown error');
+            this.cdr.detectChanges();
+        }
+    });
+}
+    
+
+
+    /*OLD THAT WORKS
     this.errorMessage = ''; // Clear error message
       //Nice to have Data types restraints and error messages when users tries to input numbers when the datatype is string 
     
@@ -94,20 +121,8 @@ loginCredentials: Credentials = {email:'', password:''};
           this.cdr.detectChanges();
         }
       });
-    /*
-    this.apiService.loginUser(this.loginCredentials).subscribe({
-      next: (response: LoginResponse) => {
-        localStorage.setItem('token', response.token);  // Correctly storing the token received from the backend
-        console.log('Login successful:', response);
-        this.sessionService.setUserEmail(this.loginCredentials.email); // Store the email of the logged-in user
-        this.router.navigate(['/input']);
-      },
-      error: (error) => {
-        console.error('Error logging in:', error);
-        this.errorMessage = 'Failed to login: ' + (error.error.message || 'Unknown error');
-      }
-    });
-    */
+      */
+    
   }
 /*  
   onLogin(): void {
@@ -128,6 +143,6 @@ loginCredentials: Credentials = {email:'', password:''};
     });
 
 }*/
-}
+
 
 

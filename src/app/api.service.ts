@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './model/users.model';//model 
+import { User, updateUser } from './model/users.model';//model 
 import { CreatePreferences, Preferences } from './model/preferences.model';
 import { WeatherData } from './model/weather.model';
 import { Credentials } from './model/credentials.model';
@@ -29,15 +29,24 @@ export class ApiService
     return this.http.post<LoginResponse>(`${this.baseUrl}/Users/login`, credentials);
   }
 
-  //ERROR!
   //CREATE NEW PREFERENCE: After logging in the user can add a preference 
-  postPreference(preferences: CreatePreferences): Observable<CreatePreferences> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`  // Trying the JWT token thing
-    });
-    return this.http.post<CreatePreferences>(`${this.baseUrl}/Preferences`, preferences, { headers });
+  postPreference(userId: number, preferences: CreatePreferences): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Preferences/${userId}`, preferences);
   }
+
+  //DELETE USER
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Users/${userId}`);
+  }
+
+  //UPDATE USER
+  updateUser(id: number, userData: { name: string, email: string, password: string }): Observable<updateUser> {
+    return this.http.put<updateUser>(`${this.baseUrl}/Users/${id}`, userData);
+  }
+
   
+
+
  //ERROR!GET PREFERENCES: Method to get the latest preference in the database
  getUserPreferences(userId: number): Observable<Preferences> {
   return this.http.get<Preferences>(`${this.baseUrl}/latest-preferences/${userId}`);
@@ -56,6 +65,17 @@ export class ApiService
     return this.http.get<Recommendation>(`${this.baseUrl}/api/BusinessLogic/outfit/${city}/${encodedUserEmail}`);
   }
   
+
+  /*
+  postPreference(preferences: CreatePreferences): Observable<CreatePreferences> {
+   
+  
+    const userId= localStorage.getItem("userId");
+    return this.http.post<CreatePreferences>(`${this.baseUrl}/Preferences/${userId}`, preferences);
+  }
+
+
+  */
   //getOutfitRecommendation(city: string, userEmail: string): Observable<Recommendation> {
   //  return this.http.get<Recommendation>(`${this.baseUrl}/api/BusinessLogic/outfit/${city}/${userEmail}`);
   //}

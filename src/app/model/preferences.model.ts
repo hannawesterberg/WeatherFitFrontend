@@ -16,3 +16,7 @@ export interface CreatePreferences //Interface used to create a new preference
 
 
 }
+
+export interface UserContext {
+  userId: number;  // Adjust the type according to your actual usage
+}
