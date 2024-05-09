@@ -1,3 +1,3 @@
 export interface Recommendation {
-    returnMessage: number;
+    returnMessage: string;
   }

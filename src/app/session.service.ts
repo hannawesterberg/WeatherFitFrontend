@@ -6,11 +6,12 @@ import { UserContext } from './model/preferences.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SessionService {private userEmail: string | null = null;
-  private city: string | null = null ; private ctx: UserContext | null = null; 
-  constructor() {}
+export class SessionService {
+  private city: string | null = null ;
+  private ctx: UserContext | null = null; 
 
-  //Create method
+
+  constructor() {}
 
   setContext(ctx: UserContext): void {
 
@@ -20,26 +21,6 @@ export class SessionService {private userEmail: string | null = null;
   getContext(): UserContext | null {
 
     return this.ctx;
-  }
-
-  /*
-  setUserId(userId: number): void{
-    this.userId =userId;
-  }
-
-  getUserId(): number | null {
-
-    return this.userId;
-  }
-  
-*/
-  //DELETE AND J
-  setUserEmail(email: string): void {
-    this.userEmail = email;
-  }
-
-  getUserEmail(): string | null {
-    return this.userEmail;
   }
 
   setCity(city: string): void {

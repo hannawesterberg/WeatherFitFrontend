@@ -1,11 +1,13 @@
 <!-- profile.component.html -->
-<div class="container mt-4">
-  <h2>Weather Information Form</h2>
+<div class="city-form">
+  <h2>Where are you located?</h2>
+  <p>Please input your city so we can generate a recommendation on what to wear today!</p>
   <form (ngSubmit)="onSubmit()" #weatherForm="ngForm">
-      <div class="form-group">
-          <label for="cityInput">Enter City:</label>
-          <input type="text" class="form-control" id="cityInput" [(ngModel)]="city" name="city" required placeholder="Type your city here...">
+      <div class="mb-3">
+        <label for="city" class="form-label"><b>City</b></label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="city" name="city">
       </div>
-      <button type="submit" class="btn btn-primary">Get Weather</button>
+      <button type="submit" class="btn btn-primary">Generate Outfit</button>
   </form>
 </div>
+

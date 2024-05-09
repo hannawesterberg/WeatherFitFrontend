@@ -1,54 +1,46 @@
-
-  
-    <!-- Form for City Input -->
-    <form (ngSubmit)="onSubmitPreferences()">
-      <div class="mb-3">
-        <label for="activity" class="form-label"><b>Activity</b></label>
-        <select class="form-select" id="activity" [(ngModel)]="preferences.activity" name="activity" required>
-          <option value="City Stroll">City Stroll</option>
-          <option value="Outdoor Activity">Outdoor Activity</option>
-          <option value="Outdoor Sport">Outdoor Sport</option>
-        </select>
-      </div>
-    
+<!-- Container for preferences -->
+<div class="preferences-section">
+  <!-- Form for Activity Input -->
+  <form (ngSubmit)="onSubmitPreferences()">
     <div class="mb-3">
-      <label for="thermal_preference" class="form-label"><b>Thermal Preference</b></label>
-      <select class="form-select" id="thermal_preference" [(ngModel)]="preferences.thermal_preference" name="thermal_preference" required>
-        <option value="Usually Freezing">Usually Freezing</option>
-        <option value="Usually Warm">Usually Warm</option>
-        <option value="No Preference">No Preference</option>
+      <label for="activity" class="form-label"><b>Activity</b></label>
+      <select class="form-select" id="activity" [(ngModel)]="preferences.activity" name="activity" required>
+        <option value="City Stroll">City Stroll</option>
+        <option value="Outdoor Activity">Outdoor Activity</option>
+        <option value="Outdoor Sport">Outdoor Sport</option>
       </select>
     </div>
     <button type="submit" class="btn btn-success">Save Preferences</button>
-    </form>
-    
- <div>
-  <form (ngSubmit)="onSubmitCity()">
-    <input type="text" [(ngModel)]="city" name="city" placeholder="Your City">
-    <button type="submit">Submit City and Fetch Weather</button>
   </form>
- </div>
+  
+  <!-- Form for City Input -->
+  <form (ngSubmit)="onSubmitCity()" class="city-form">
+    <div class="mb-3">
+      <label for="city" class="form-label"><b>City</b></label>
+      <input type="text" class="form-control" id="city" [(ngModel)]="city" name="city">
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Outfit</button>
+  </form>
+</div>
 
+<!-- Separator -->
+<div class="section-separator"></div>
 
-
-  <!-- Form for Updating User Information -->
+<!-- Form for Updating User Information -->
+<div class="user-update-section">
   <form (ngSubmit)="onUpdateUser()">
     <h2>Update User Information</h2>
     <div class="mb-3">
-      <input type="text" [(ngModel)]="updateUser.name" name="name" placeholder="Your Name" class="form-control">
-      <input type="email" [(ngModel)]="updateUser.email" name="email" placeholder="Your Email" class="form-control">
-      <input type="password" [(ngModel)]="updateUser.password" name="password" placeholder="Your Password" class="form-control">
+      <input type="text" class="form-control" [(ngModel)]="updateUser.name" name="name" placeholder="Your Name">
+      <input type="email" class="form-control" [(ngModel)]="updateUser.email" name="email" placeholder="Your Email">
+      <input type="password" class="form-control" [(ngModel)]="updateUser.password" name="password" placeholder="Your Password">
     </div>
     <button type="submit" class="btn btn-info">Update User</button>
   </form>
 
-  <!-- Button to Generate Outfit -->
-  <div>
-    <button (click)="generateOutfit()" class="btn btn-secondary">Generate Outfit</button>
-  </div>
-
   <!-- Button to Delete User Account -->
   <div>
-    <h1>Delete Account</h1>
+    <h2>Delete Account</h2>
     <button (click)="onDeleteUser()" class="btn btn-danger">Delete Account</button>
   </div>
+</div>

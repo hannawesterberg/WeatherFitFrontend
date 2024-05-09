@@ -1,0 +1,34 @@
+.preferences-section {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .city-form {
+    margin-top: 20px;
+  }
+  
+  .form-control, .form-select {
+    margin-bottom: 10px; /* Adds space below each input */
+    width: 95%; /* Consistent width for all form inputs */
+  }
+  
+  .form-label {
+    font-weight: bold; /* Makes labels bold */
+  }
+  
+  .section-separator {
+    margin: 40px 0; /* Adds vertical space between sections */
+    border-top: 2px solid #ccc; /* Visual separator line */
+  }
+  
+  .user-update-section {
+    background-color: #e8eaf6;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .btn {
+    width: 100%; /* Full width buttons */
+  }
+  

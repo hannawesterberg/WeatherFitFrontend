@@ -10,18 +10,18 @@ export interface WeatherData {
     lat: number;
   }
    export interface Weather {
-    main: string;  // Short description
-    description: string;  // Long description
+    main: string;  
+    description: string;
   }
    export interface Main {
-    temp: number;  // Temperature in Kelvin
-    feels_like: number;  // Feels like temperature in Kelvin
-    // humidity: number;  // Uncomment if you decide to include humidity
+    temp: number;  
+    feels_like: number;  
+    
   }
    export interface Wind {
-    speed: number;  // Wind speed in meter/sec
+    speed: number;  
   }
    export interface Clouds {
-    all: number;  // Cloudiness in percentage
+    all: number;  
   }
  

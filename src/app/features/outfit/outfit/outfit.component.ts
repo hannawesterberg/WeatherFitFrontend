@@ -1,7 +1,6 @@
-import { Component,OnInit,inject } from "@angular/core";
+import { Component,OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { Recommendation } from "../../../model/recommendation.model";
+import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from "../../../api.service";
 import { SessionService } from "../../../session.service";
 
@@ -20,33 +19,29 @@ export class OutfitComponent implements OnInit {
   constructor(private apiService: ApiService, private sessionService: SessionService) {}
 
   ngOnInit(): void {
-    this.fetchData();
+    this.fetchData(); //Display message directly 
   }
 
   fetchData(): void {
-
-    // Retrieve city and email from session service
+    //SET VARIABLES: 
     const city = this.sessionService.getCity();
-    const userEmail = this.sessionService.getUserEmail();
+    const ctx = this.sessionService.getContext() as { userId: number }
+    console.log('Fetching data for:', city, ctx.userId); // Debugging output to see if the right id and city is being stored
 
-    console.log('Fetching data for:', city, userEmail); // Debugging output to see if the right email and city is being stored
-
-    if (city && userEmail) {
-    this.apiService.getOutfitRecommendation(city, userEmail).subscribe({
+    if (city && ctx.userId) {
+    this.apiService.getOutfitRecommendation(city, ctx.userId).subscribe({
       next: (response) => {
         this.data = response;
         console.log('Recommendation received:', response);
       },
       error: (error) => {
         console.error('Error fetching data:', error);
-        this.data = null; // Reset or handle error state appropriately
+        this.data = null; 
       }
       });
   }
   else{
     console.error('City or User Email is not set');
-      // Handle the case where city or email is not available
   }
 }
-
 }

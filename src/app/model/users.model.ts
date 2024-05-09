@@ -7,6 +7,10 @@ export interface User
    thermal_preference: string;
 
  }
+ export interface SignUpResponse {
+
+  userId: number;  
+}
 
  export interface updateUser{
 
