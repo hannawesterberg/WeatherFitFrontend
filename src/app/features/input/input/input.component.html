@@ -1,4 +1,6 @@
 <!-- Container for preferences -->
+<h1>Welcome back! We have missed you :)</h1>
+<p>Select your daily activity and where you are located and we can help you with your daily outfit recommendation</p>
 <div class="preferences-section">
   <!-- Form for Activity Input -->
   <form (ngSubmit)="onSubmitPreferences()">
@@ -25,11 +27,11 @@
 
 <!-- Separator -->
 <div class="section-separator"></div>
-
 <!-- Form for Updating User Information -->
 <div class="user-update-section">
   <form (ngSubmit)="onUpdateUser()">
     <h2>Update User Information</h2>
+    <p>Please insert your new account details</p>
     <div class="mb-3">
       <input type="text" class="form-control" [(ngModel)]="updateUser.name" name="name" placeholder="Your Name">
       <input type="email" class="form-control" [(ngModel)]="updateUser.email" name="email" placeholder="Your Email">
@@ -41,6 +43,7 @@
   <!-- Button to Delete User Account -->
   <div>
     <h2>Delete Account</h2>
+    <p>Click on the button to delete your account</p>
     <button (click)="onDeleteUser()" class="btn btn-danger">Delete Account</button>
   </div>
 </div>

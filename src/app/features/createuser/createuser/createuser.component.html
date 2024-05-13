@@ -1,6 +1,11 @@
 <div class="container mt-5">
   <h1>Welcome to WeatherFit</h1>
-  
+  <div>
+    <p>WeatherFit helps you get inspiration on what to wear today based on the current weather depending on where you are located.</p>
+    <p>Sign up or Log in to generate your personal outfit</p>
+    <p><em>There's no such thing as bad weather, only bad clothing!</em></p>
+  </div>
+ 
   <!-- Login Form Section -->
   <div class="row mt-4">
     <div class="col-md-6">
@@ -10,6 +15,8 @@
         </div>
         <div class="card-body">
           <form (ngSubmit)="onLogin()">
+             <!-- Login Form Section <form  (ngSubmit)="onLogin()">-->
+         
             <div *ngIf="errorMessage2" class="alert alert-danger">{{ errorMessage2 }}</div>
             <div class="mb-3">
               <label for="login-email" class="form-label"><b>Email</b></label>
@@ -25,6 +32,7 @@
       </div>
     </div>
 
+
     <!-- Sign Up Form Section -->
     <div class="col-md-6">
       <div class="card">
@@ -32,7 +40,7 @@
           <h2>Sign Up</h2>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="onSignUp()" #signUpForm="ngForm"> 
+          <form (ngSubmit)="onSignUp()" #signUpForm="ngForm">
             <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
             <div class="mb-3">
               <label for="name" class="form-label"><b>Name</b></label>
